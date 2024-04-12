@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry } from "astro:content"
+type Props = CollectionEntry<"shirts">["data"]
+const {image, title, price, size} = Astro.props
+---
+
+<div class="h-[500px]  bg-white w-[90%] text-black rounded-xl border-2 border-black flex flex-col justify-center items-center my-4 md:my-2 ">
+    <div class="h-[60%] flex items-center">
+        <svg
+            xmlns={image}
+            width="200"
+            height="200"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-shirt"
+        >
+            <>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0" />
+            </>
+        </svg>
+    </div>
+    <div class="w-[90%] h-[40%] flex flex-col justify-around items-center border-t-2 py-2">
+        <h3>{title}</h3>
+        <p class="text-xl text-red-600">{price}</p>
+        <div class="w-[50%] flex justify-around">
+            {size.map((size) => (
+                <span class="min-w-[45px] rounded-md border flex justify-center p-2 bg-white text-black">
+                    {size}
+                </span>
+            ))}
+        </div>
+        <button class="border p-2 rounded-lg bg-red-300 hover:bg-red-500">
+            Comprar
+        </button>
+    </div>
+</div>

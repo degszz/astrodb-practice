@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+const shirts = await getCollection("shirts");
+import Card from "../components/Card.astro";
+---
+
+<div id="SHIRTS" class="h-2"></div>
+<ul
+    class="w-[100%] h-fit mb-14 mt-12 grid grid-cols-1 md:grid-cols-3 place-items-center"
+>
+    {shirts.map((shirts) => <Card {...shirts.data} />)}
+</ul>
